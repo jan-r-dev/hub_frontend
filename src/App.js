@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 
-import Header from './components/main/header/header'
-import Navbar from './components/main/navbar/navbar'
-import Content from './components/main/content/content'
-import Footer from './components/main/footer/footer'
+import Header from './components/main/header/Header'
+import Navbar from './components/main/navbar/Navbar'
+import Content from './components/main/content/Content'
+import Footer from './components/main/footer/Footer'
 
 const App = () => {
   return ( 
