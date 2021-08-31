@@ -3,8 +3,8 @@ import styles from './Navbar.module.css'
 
 const Navbar = () => {
     return ( 
-        <div cclassName={styles.navbar}>
-
+        <div className={styles.navbar}>
+            Navbar
         </div>
      );
 }

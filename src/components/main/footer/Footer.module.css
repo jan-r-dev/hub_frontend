@@ -1,3 +1,8 @@
 .footer {
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.082);
+    grid-column: full-start / full-end;
+
+    /* Placeholder height */
+    height: 10vh;
+    /* / Placeholder  */
 }

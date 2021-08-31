@@ -4,7 +4,7 @@ import styles from './Content.module.css'
 const Content = () => {
     return ( 
         <main className={styles.content}>
-
+            Content
         </main>
      );
 }
