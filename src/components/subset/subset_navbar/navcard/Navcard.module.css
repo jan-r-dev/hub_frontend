@@ -1,0 +1,10 @@
+navcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(128, 128, 128, 0.514);
+
+    width: 90%;
+    height: 5rem;
+}
