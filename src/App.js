@@ -7,20 +7,41 @@ import Content from './components/main/content/Content';
 import Footer from './components/main/footer/Footer';
 
 const App = () => {
-  const [showPortfolio, setShowPortfolio] = useState(false);
-  const [showAboutMe, setShowAboutMe] = useState(false);
-  const [showLinks, setShowLinks] = useState(false);
+  const [portfolio, setPortfolio] = useState(false);
+  const [aboutMe, setAboutMe] = useState(false);
+  const [links, setLinks] = useState(false);
+
+  const showReset = () => {
+    setAboutMe(false);
+    setLinks(false);
+    setPortfolio(false);
+  }
+
+  const showPortfolio = () => {
+    showReset();
+    setPortfolio(true);
+  };
+
+  const showAboutMe = () => {
+    showReset();
+    setAboutMe(true);
+  };
+
+  const showLinks = () => {
+    showReset();
+    setLinks(true);
+  };
 
   const navbarPaths = {
-    showPortfolio: setShowPortfolio,
-    showAboutMe: setShowAboutMe,
-    showLinks: setShowLinks
+    showPortfolio,
+    showAboutMe,
+    showLinks,
   };
 
   const contentPaths = {
-    showPortfolio: showPortfolio,
-    showAboutMe: showAboutMe,
-    showLinks: showLinks
+    portfolio,
+    aboutMe,
+    links,
   };
 
 
@@ -33,5 +54,7 @@ const App = () => {
     </div>
    );
 }
+
+//        <button onClick={() => console.log(portfolio, aboutMe, links)}>CheckState</button>
  
 export default App;

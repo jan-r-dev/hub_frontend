@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Navcard.module.css'
 
-const Navcard = () => {
+const Navcard = (props) => {
     return ( 
         <div className={styles.navcard}>
-            Navcard
+            {}
         </div>
      );
 }

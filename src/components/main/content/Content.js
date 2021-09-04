@@ -8,23 +8,23 @@ import Portfolio from '../../subset/subset_content/portfolio/Portfolio';
 /*
 Content paths prop:
 
-const contentPaths = {
-    showPortfolio: showPortfolio,
-    showAboutMe: showAboutMe,
-    showLinks: showLinks
-};
+  const contentPaths = {
+    portfolio,
+    aboutMe,
+    links,
+  };
 
 */
 
 const Content = (props) => {
     let content;
 
-    if (props.contentPaths.showPortfolio === true) {
+    if (props.contentPaths.portfolio === true) {
+        content = <Portfolio/>
+    } else if (props.contentPaths.aboutMe === true) {
+        content = <AboutMe/>
+    } else if (props.contentPaths.links === true) {
         content = <Links/>;
-    } else if (props.contentPaths.showAboutMe === true) {
-        content = <Portfolio/>;
-    } else if (props.contentPaths.showLinks === true) {
-        content = <AboutMe/>;
     } else {
         // Placeholder
         // May change in the future to a dedicated Intro component

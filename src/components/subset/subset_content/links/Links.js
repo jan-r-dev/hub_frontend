@@ -4,7 +4,7 @@ import styles from './Links.module.css'
 const Links = () => {
     return ( 
         <div className={styles.links}>
-            links are blue
+            Links are blue
         </div>
      );
 }
