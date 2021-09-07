@@ -3,9 +3,9 @@ import styles from './Navcard.module.css'
 
 const Navcard = (props) => {
     return ( 
-        <div className={styles.navcard}>
-            {}
-        </div>
+        <button className={styles.navcard} onClick={props.action}>
+            {props.title}
+        </button>
      );
 }
  

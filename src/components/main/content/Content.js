@@ -5,25 +5,14 @@ import Links from '../../subset/subset_content/links/Links'
 import AboutMe from '../../subset/subset_content/aboutme/AboutMe'
 import Portfolio from '../../subset/subset_content/portfolio/Portfolio';
 
-/*
-Content paths prop:
-
-  const contentPaths = {
-    portfolio,
-    aboutMe,
-    links,
-  };
-
-*/
-
 const Content = (props) => {
     let content;
 
-    if (props.contentPaths.portfolio === true) {
+    if (props.contentOption === 'Portfolio') {
         content = <Portfolio/>
-    } else if (props.contentPaths.aboutMe === true) {
+    } else if (props.contentOption === 'About_me') {
         content = <AboutMe/>
-    } else if (props.contentPaths.links === true) {
+    } else if (props.contentOption === 'Links') {
         content = <Links/>;
     } else {
         // Placeholder

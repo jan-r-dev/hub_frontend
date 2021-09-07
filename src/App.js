@@ -6,50 +6,21 @@ import Navbar from './components/main/navbar/Navbar';
 import Content from './components/main/content/Content';
 import Footer from './components/main/footer/Footer';
 
+
 const App = () => {
-  const [portfolio, setPortfolio] = useState(false);
-  const [aboutMe, setAboutMe] = useState(false);
-  const [links, setLinks] = useState(false);
+  const [content, setContent] = useState('intro');
 
-  const showReset = () => {
-    setAboutMe(false);
-    setLinks(false);
-    setPortfolio(false);
+  const contentOptions = ['Portfolio', 'About_me', 'Links'];
+
+  const changeContent = (content) => {
+    setContent(content);
   }
-
-  const showPortfolio = () => {
-    showReset();
-    setPortfolio(true);
-  };
-
-  const showAboutMe = () => {
-    showReset();
-    setAboutMe(true);
-  };
-
-  const showLinks = () => {
-    showReset();
-    setLinks(true);
-  };
-
-  const navbarPaths = {
-    showPortfolio,
-    showAboutMe,
-    showLinks,
-  };
-
-  const contentPaths = {
-    portfolio,
-    aboutMe,
-    links,
-  };
-
 
   return (
     <div className="container">
         <Header></Header>
-        <Navbar navbarPaths={navbarPaths}/>
-        <Content contentPaths={contentPaths}/>
+        <Navbar navOptions={contentOptions} navigate={changeContent}/>
+        <Content contentOption={content}/>
         <Footer></Footer>
     </div>
    );
