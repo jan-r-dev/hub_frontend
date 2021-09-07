@@ -1,25 +1,6 @@
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-}
-
-html {
-    box-sizing: border-box;
-    font-size: 80.5%;
-}
-
-body {
-  font-family: "Lato", sans-serif;
-  color: #292521;
-  font-weight: 300;
-  line-height: 1.6;
-}
-
 .container {
   display: grid;
-  grid-template-rows: 20vh repeat(2, min-content);
+  grid-template-rows: 10vh repeat(2, min-content);
   grid-template-columns: 
     [navbar-start full-start] 30rem
     [navbar-end] minmax(6rem, 1fr)
