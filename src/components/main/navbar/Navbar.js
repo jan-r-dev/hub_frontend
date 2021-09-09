@@ -3,14 +3,12 @@ import styles from './Navbar.module.css'
 
 import Navcard from '../../subset/subset_navbar/navcard/Navcard'
 
-const Navbar = (props) => {
+const Navbar = () => {
 
-  const navcards = [];
+  const navOptions = ['Portfolio', 'About-me', 'Links'];
 
-  props.navOptions.forEach(el => {
-    navcards.push(
-      <Navcard title={el.replace('_', ' ')} action={() => props.navigate(el)} />
-    )
+  const navcards = navOptions.map(el => {
+    return <Navcard title={el} key={el}/>
   })
 
     return ( 

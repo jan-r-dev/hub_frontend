@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Navcard.module.css'
+import { Link } from 'react-router-dom';
 
 const Navcard = (props) => {
     return ( 
-        <button className={styles.navcard} onClick={props.action}>
-            {props.title}
-        </button>
+        <Link to={`/${props.title.toLowerCase()}`} className={styles.navcard}>
+            {props.title.replace('-', ' ')}
+        </Link>  
      );
 }
  

@@ -1,28 +1,30 @@
 import React from 'react';
 import styles from './Content.module.css'
+import {Route} from 'react-router-dom'
 
 import Links from '../../subset/subset_content/links/Links'
 import AboutMe from '../../subset/subset_content/aboutme/AboutMe'
 import Portfolio from '../../subset/subset_content/portfolio/Portfolio';
 
-const Content = (props) => {
-    let content;
-
-    if (props.contentOption === 'Portfolio') {
-        content = <Portfolio/>
-    } else if (props.contentOption === 'About_me') {
-        content = <AboutMe/>
-    } else if (props.contentOption === 'Links') {
-        content = <Links/>;
-    } else {
-        // Placeholder
-        // May change in the future to a dedicated Intro component
-        content = <Portfolio/>;
-    };
+const Content = () => {
 
     return ( 
         <main className={styles.content}>
-            {content}
+            <Route path="/" exact>
+                <Portfolio />
+            </Route>
+
+            <Route path="/portfolio" exact>
+                <Portfolio />
+            </Route>
+
+            <Route path="/about-me" exact>
+                <AboutMe />
+            </Route>
+            
+            <Route path="/links" exact>
+                <Links />
+            </Route>
         </main>
      );
 }

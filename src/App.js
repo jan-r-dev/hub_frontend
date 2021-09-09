@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 import './App.css';
 
 import Header from './components/main/header/Header';
@@ -8,24 +9,15 @@ import Footer from './components/main/footer/Footer';
 
 
 const App = () => {
-  const [content, setContent] = useState('intro');
-
-  const contentOptions = ['Portfolio', 'About_me', 'Links'];
-
-  const changeContent = (content) => {
-    setContent(content);
-  }
 
   return (
     <div className="container">
         <Header></Header>
-        <Navbar navOptions={contentOptions} navigate={changeContent}/>
-        <Content contentOption={content}/>
+        <Navbar />
+        <Content/>
         <Footer></Footer>
     </div>
    );
 }
-
-//        <button onClick={() => console.log(portfolio, aboutMe, links)}>CheckState</button>
  
 export default App;
