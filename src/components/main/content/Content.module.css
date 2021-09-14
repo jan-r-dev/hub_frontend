@@ -1,9 +1,8 @@
 .content {
-    background-color: rgba(255, 0, 0, 0.144);
     grid-column: center-start / center-end;
 
-    /* Placeholder height */
-    height: 90vh;
-    /* / Placeholder  */
+    display: grid;
+    align-content: stretch;
+    justify-content: stretch;
 
 }

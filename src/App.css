@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-rows: 10vh repeat(2, min-content);
+  grid-template-rows: 10vh 90vh;
   grid-template-columns: 
     [navbar-start full-start] 30rem
     [navbar-end] minmax(6rem, 1fr)
