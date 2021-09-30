@@ -1,6 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import styles from './Portfolio.module.css'
 import Card from '../card/Card'
+import axios from 'axios';
 
 const dummyData = [
     {title: 'Webscraper Heureka', summary: 'This webscraper programmed in Python scouts a select range of products offered and rates the position of a given company\' s selection in opposition to competitors.', stack: ['Python', 'BeautifulSoup'], link: '\\heureka-scraper'},
@@ -14,23 +15,26 @@ const Portfolio = () => {
 
     function generateCards (dataArr) {
         const cards = dataArr.map(el => {
-            return <Card title={el.title} summary={el.summary} stack={el.stack} link={el.link}/>
+            return <Card key={el.title} title={el.title} summary={el.summary} stack={el.stack} link={el.link}/>
         });
 
         return cards;
     };
 
+    async function requestData () {
+        try {
+            const data = await axios.get('https://dog.ceo/api/breeds/list/all')
+            console.log('success', data)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
 
     useEffect(() => {
+        requestData();
         setCards(generateCards(dummyData));
     }, [])
-
-    // Begin with API call
-
-
-    // For each item returned by an API call create one instance of card
-    // Put all cards inside array and return them
-
     
     return ( 
         <div className={styles.portfolio}>
