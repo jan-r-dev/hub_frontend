@@ -4,7 +4,7 @@ import styles from './Card.module.css'
 const Card = (props) => {
 
     const stack = props.stack.map(el => {
-        return <h4 className={styles.card__h4}>{el}</h4>
+        return <h4 key={el} className={styles.card__h4}>{el}</h4>
       })
 
     return ( 
