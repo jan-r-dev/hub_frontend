@@ -15,6 +15,7 @@ const Card = (props) => {
             <div className={styles.card__stack}>
                 {stack}
             </div>
+            <button className={styles.card__exploreBtn}>Explore</button>
 
         </div>
      );

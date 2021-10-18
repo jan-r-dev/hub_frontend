@@ -38,7 +38,7 @@ const Portfolio = () => {
     
     return ( 
         <div className={styles.portfolio}>
-            <button onClick={() => fetchData()} >Test change</button>
+            {/* <button onClick={() => fetchData()} >Test change</button> */}
             {cards}
         </div>
      );
