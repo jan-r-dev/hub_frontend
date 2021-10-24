@@ -1,11 +1,14 @@
 import React from 'react';
 import styles from './Card.module.css'
+import { Link } from 'react-router-dom';
 
 const Card = (props) => {
 
     const stack = props.stack.map(el => {
         return <h4 key={el} className={styles.card__h4}>{el}</h4>
       })
+
+    // Here the button must trigger opening of the article
 
     return ( 
         <div className={styles.card}>
@@ -15,10 +18,25 @@ const Card = (props) => {
             <div className={styles.card__stack}>
                 {stack}
             </div>
-            <button className={styles.card__exploreBtn}>Explore</button>
-
+            <Link to={`/portfolio/${props.title}`} className={styles.card__exploreBtn}>
+                Read article
+            </Link>
         </div>
      );
-}
+};
  
 export default Card;
+
+/*
+    <Link to={`/${props.title.toLowerCase()}`} className={styles.navcard}>
+        {props.title.replace('-', ' ')}
+    </Link>
+
+    <Route path="/" exact>
+        <Portfolio />
+    </Route>
+
+    import {Route} from 'react-router-dom';
+    import { Link } from 'react-router-dom';
+
+*/

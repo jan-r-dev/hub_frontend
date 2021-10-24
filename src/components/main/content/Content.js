@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Content.module.css'
-import {Route} from 'react-router-dom'
+import styles from './Content.module.css';
+import {Route} from 'react-router-dom';
 
-import Links from '../../subset/subset_content/links/Links'
-import AboutMe from '../../subset/subset_content/aboutme/AboutMe'
+import Links from '../../subset/subset_content/links/Links';
+import AboutMe from '../../subset/subset_content/aboutme/AboutMe';
 import Portfolio from '../../subset/subset_content/portfolio/Portfolio';
 
 const Content = () => {
@@ -14,7 +14,7 @@ const Content = () => {
                 <Portfolio />
             </Route>
 
-            <Route path="/portfolio" exact>
+            <Route path="/portfolio">
                 <Portfolio />
             </Route>
 

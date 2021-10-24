@@ -1,5 +1,6 @@
 .card {
-    background-color: rgb(253, 250, 221);
+    background-color: rgb(70, 68, 68);
+    color: rgb(230, 230, 230);
 
     display: flex;
     flex-direction: column;
@@ -11,7 +12,7 @@
     justify-content: center;
     align-items: center;
 
-    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    box-shadow: rgba(0, 0, 0, 0.274) 2.4px 2.4px 3.2px;
 
 }
 
@@ -39,14 +40,16 @@
     all: unset;
     font-size: 2.1rem;
     cursor: pointer;
-    width: 12.3rem;
+    width: 15rem;
+    color: inherit;
 
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    background-color: orangered;
-    color: white;
+    background-color: rgb(190, 64, 18);
 
-    height: 4.2rem;
+    height: 5rem;
     border-radius: 5px;
 
     margin-top: auto;

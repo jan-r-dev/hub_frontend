@@ -1,4 +1,5 @@
 import {React, useEffect, useState} from 'react';
+import {useParams, useLocation} from 'react-router-dom'
 import styles from './Portfolio.module.css';
 import Card from '../card/Card';
 import axios from 'axios';
@@ -9,9 +10,7 @@ const Portfolio = () => {
 
     async function fetchData () {
         try {
-            console.log(oldestCard);
             const data = await axios.get(`http://localhost:8080/projects/${oldestCard}`);
-            console.log('success', data);
 
             setCards(generateCards(data.data));
         } catch (err) {
@@ -25,11 +24,16 @@ const Portfolio = () => {
                 setOldestCard(Math.trunc((Date.parse(el.created_on) / 1000)));
             };
 
-            return <Card key={el.created_on} title={el.title} summary={el.summary} stack={el.stack} link={el.link}/>;
+            return <Card key={el.created_on} title={el.title} summary={el.summary} stack={el.stack} link={el.link} article={el.article_id}/>;
         });
 
         return cards;
     };
+
+    function LinkParams() {
+        let { slug } = useLocation();
+        return <div>Now showing post {slug}</div>;
+      }
 
     useEffect(() => {
         fetchData()
@@ -38,8 +42,8 @@ const Portfolio = () => {
     
     return ( 
         <div className={styles.portfolio}>
-            {/* <button onClick={() => fetchData()} >Test change</button> */}
             {cards}
+            {LinkParams()}
         </div>
      );
 }

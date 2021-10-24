@@ -1,4 +1,4 @@
 .header {
-    background-color: rgba(0, 128, 0, 0.103);
+    background-color: rgb(78, 76, 76);
     grid-column: full-start / full-end;
 }
