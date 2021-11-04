@@ -30,10 +30,10 @@ const Portfolio = () => {
         return cards;
     };
 
-    function LinkParams() {
-        let { slug } = useLocation();
-        return <div>Now showing post {slug}</div>;
-      }
+    // function LinkParams() {
+    //     let { slug } = useLocation();
+    //     return <div>Now showing post {slug}</div>;
+    //   }
 
     useEffect(() => {
         fetchData()
@@ -43,7 +43,6 @@ const Portfolio = () => {
     return ( 
         <div className={styles.portfolio}>
             {cards}
-            {LinkParams()}
         </div>
      );
 }

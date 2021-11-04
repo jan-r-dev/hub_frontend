@@ -14,7 +14,7 @@ const Content = () => {
                 <Portfolio />
             </Route>
 
-            <Route path="/portfolio">
+            <Route path="/portfolio" exact>
                 <Portfolio />
             </Route>
 

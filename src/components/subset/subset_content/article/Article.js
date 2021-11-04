@@ -36,11 +36,16 @@ export default Article;
 
 /* Notes on continuation
 
+0) Thoroughly test current routing and potentially relocate it all to the root component.
 1) Modify Portfolio for NavLinks instead of Link for styling
 2) Register new dynamic route in /portfolio for portfolio/:articleLink
 3) Extract route parameter :articleLink in the Article component using useParams
 4) Modify the article endpoint in backend to accept :articleLink instead of the Mongo ObjectID
 5) Add Links to the portfolio cards
 6) Verify that Portfolio routing works and is exact
+7) Create a fallback 404 route as a last resort match
+
+
+Result of the useLocation hook: Object { pathname: "/quotes", search: "?sort=asc", hash: "", state: undefined, key: "g5z6oc" }
 
 */

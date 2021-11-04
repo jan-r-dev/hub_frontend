@@ -1,4 +1,15 @@
 .header {
     background-color: rgb(78, 76, 76);
     grid-column: full-start / full-end;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header__h1 {
+    color: rgb(230, 230, 230);
+
+    font-size: 2.5rem;
+    margin-left: 2.3rem;
 }

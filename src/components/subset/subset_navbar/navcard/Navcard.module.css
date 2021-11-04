@@ -1,7 +1,7 @@
 .navcard {
     all: unset;
     
-    font-size: 160%;
+    font-size: 1.7rem;
     color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
