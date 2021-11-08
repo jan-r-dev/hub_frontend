@@ -1,33 +1,43 @@
-import {React} from 'react';
+import axios from 'axios';
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import styles from './Article.module.css';
 
-const Article = (props) => {
+const Article = () => {
 
-    // Process text list from API in accordance with the diagram
+    const params = useParams();
+
     function processData(data) {
-        data.text.forEach(el => {
+        data.data.text.forEach(el => {
             console.log(el);
         });
 
-        return processedData;
+        return
     };
 
     // Fetch data from the Article endpoint with the article_id provided by the prop
+
     async function fetchData() {
         try {
-            const data = await axios.get(`http://localhost:8080/articles/${props.article_id}`);
-            const processedData = processData(data.data);
+            const data = await axios.get(`http://localhost:8080/articles/${params.articleId}`);
 
-            return processedData
+            processData(data)
         } catch (err) {
             console.log(err);
         };
     };
+
+
+
+    useEffect(() => {
+        fetchData();
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [params.articleId])
     
-    // Return article
     return ( 
         <div className={styles.Article}>
-            {props.content}
+            <p>{params.articleId}</p>
         </div>
      );
 };

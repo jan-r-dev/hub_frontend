@@ -1,5 +1,4 @@
 import {React, useEffect, useState} from 'react';
-import {useParams, useLocation} from 'react-router-dom'
 import styles from './Portfolio.module.css';
 import Card from '../card/Card';
 import axios from 'axios';
