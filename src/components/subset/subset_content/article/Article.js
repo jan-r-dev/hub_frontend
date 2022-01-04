@@ -1,29 +1,15 @@
 import axios from 'axios';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import styles from './Article.module.css';
+import ReactEmbedGist from 'react-embed-gist';
 
 const Article = () => {
+    const [article, setArticle] = useState([]);
 
     const params = useParams();
 
-    function processData(data) {
-        data.data.text.forEach(el => {
-            if (el.startsWith('@@img-')) {
-                console.log('Image' + el)
-            } else if (el.startsWith('@@code-')) {
-                console.log('Code' + el)
-            } else if (el.startsWith('@@link-')){
-                console.log('Link' + el)
-            } else {
-                console.log('Text' + el)
-            }
-        });
-
-        return
-    };
-
-    // Fetch data from the Article endpoint with the article_id provided by the prop
+    // Fetch data from the Article endpoint with the link provided by useParams
 
     async function fetchData() {
         try {
@@ -35,7 +21,31 @@ const Article = () => {
         };
     };
 
+    // Process text according to the API pattern
 
+    function processData(data) {
+        const processedArticle = [];
+
+        data.data.text.forEach((el, index) => {
+            const articleIndex = parseInt(el.split('-')[1], 10)
+
+            if (el.startsWith('@@img-')) {
+                processedArticle.push(<img alt='placeholder' src={data.data.images[articleIndex]} />)
+
+            } else if (el.startsWith('@@code-')) {
+                processedArticle.push(<ReactEmbedGist gist={data.data.snippets[articleIndex]} />)
+
+            } else if (el.startsWith('@@link-')){
+                processedArticle.push(<a href={data.data.sources[articleIndex]}>{data.data.sources[articleIndex]}</a>)
+
+            } else {
+                processedArticle.push(<p>{data.data.text[index]}</p>)
+            }
+        });
+
+        processedArticle.unshift(<h2 className={styles.articleHeading}>{data.data.title}</h2>)
+        setArticle(processedArticle)
+    };
 
     useEffect(() => {
         fetchData();
@@ -45,7 +55,10 @@ const Article = () => {
     
     return ( 
         <div className={styles.Article}>
-            <p>{params.articleId}</p>
+
+            <div className={styles.articleContent}>
+                {article}
+            </div>
         </div>
      );
 };
@@ -65,5 +78,26 @@ export default Article;
 
 
 Result of the useLocation hook: Object { pathname: "/quotes", search: "?sort=asc", hash: "", state: undefined, key: "g5z6oc" }
+
+
+
+import React from 'react';
+import styles from './AboutMe.module.css'
+import ReactEmbedGist from 'react-embed-gist';
+
+const AboutMe = () => {
+    return ( 
+        <div className={styles.aboutme}>
+            AboutMe is green
+            <div>
+                <h1> Test gist </h1>
+                <ReactEmbedGist gist="jan-r-dev/ffcfb73d84dc9380fabf628a598cf116"/>
+                <script type="text/jsx" src="https://gist.github.com/jan-r-dev/ffcfb73d84dc9380fabf628a598cf116.js"></script>
+            </div>
+        </div>
+     );
+}
+ 
+export default AboutMe;
 
 */
