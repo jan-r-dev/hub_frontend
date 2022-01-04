@@ -1,5 +1,5 @@
 .portfolio {
-    background-color: rgb(78, 76, 76);
+    background-color: rgb(24, 24, 24);
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));

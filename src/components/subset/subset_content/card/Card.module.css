@@ -1,5 +1,5 @@
 .card {
-    background-color: rgb(70, 68, 68);
+    background-color: rgb(32, 32, 32);
     color: rgb(230, 230, 230);
 
     display: flex;
@@ -50,7 +50,7 @@
     background-color: rgb(190, 64, 18);
 
     height: 5rem;
-    border-radius: 5px;
+    border-radius: .2rem;
 
     margin-top: auto;
     margin-bottom: 2rem;

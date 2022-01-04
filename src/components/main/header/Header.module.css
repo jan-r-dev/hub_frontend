@@ -1,5 +1,5 @@
 .header {
-    background-color: rgb(78, 76, 76);
+    background-color: rgb(32, 32, 32);
     grid-column: full-start / full-end;
 
     display: flex;

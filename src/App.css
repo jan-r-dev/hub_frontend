@@ -1,5 +1,5 @@
 .container {
-  background-color: rgb(70, 68, 68);
+  background-color: rgb(24, 24, 24);
   display: grid;
   grid-template-rows: 10vh 90vh;
   grid-template-columns: 

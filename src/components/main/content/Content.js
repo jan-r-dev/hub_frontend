@@ -27,7 +27,7 @@ const Content = () => {
                 <Route path='/articles/:articleId'>
                     <Article/>
                 </Route>
-            </Switch>f
+            </Switch>
         </main>
      );
 }
