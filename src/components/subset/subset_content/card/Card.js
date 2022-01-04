@@ -18,7 +18,7 @@ const Card = (props) => {
             <div className={styles.card__stack}>
                 {stack}
             </div>
-            <Link to={`/portfolio/${props.title}`} className={styles.card__exploreBtn}>
+            <Link to={`/portfolio/articles/${props.link}`} className={styles.card__exploreBtn}>
                 Read article
             </Link>
         </div>

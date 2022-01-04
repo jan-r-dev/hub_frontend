@@ -23,16 +23,11 @@ const Portfolio = () => {
                 setOldestCard(Math.trunc((Date.parse(el.created_on) / 1000)));
             };
 
-            return <Card key={el.created_on} title={el.title} summary={el.summary} stack={el.stack} link={el.link} article={el.article_id}/>;
+            return <Card key={el.created_on} title={el.title} summary={el.summary} stack={el.stack} link={el.link}/>;
         });
 
         return cards;
     };
-
-    // function LinkParams() {
-    //     let { slug } = useLocation();
-    //     return <div>Now showing post {slug}</div>;
-    //   }
 
     useEffect(() => {
         fetchData()

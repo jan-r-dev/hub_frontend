@@ -24,7 +24,7 @@ const Content = () => {
                 <Route path="/links" exact>
                     <Links />
                 </Route>
-                <Route path='/articles/:articleId'>
+                <Route path='/portfolio/articles/:articleId'>
                     <Article/>
                 </Route>
             </Switch>

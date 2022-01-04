@@ -9,7 +9,15 @@ const Article = () => {
 
     function processData(data) {
         data.data.text.forEach(el => {
-            console.log(el);
+            if (el.startsWith('@@img-')) {
+                console.log('Image' + el)
+            } else if (el.startsWith('@@code-')) {
+                console.log('Code' + el)
+            } else if (el.startsWith('@@link-')){
+                console.log('Link' + el)
+            } else {
+                console.log('Text' + el)
+            }
         });
 
         return
