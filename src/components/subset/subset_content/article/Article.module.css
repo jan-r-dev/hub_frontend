@@ -8,4 +8,34 @@
     font-size: 1.7rem;
     color: rgb(255, 255, 255);
 
+    gap: 3.4rem;
+    padding: 3.4rem 0 3.4rem 0
+
 }
+
+.articleImage {
+    max-height: 40rem;
+}
+
+.articleText {
+    height: max-content;
+    align-self: flex-start;
+}
+
+.articleLink {
+    all: unset;
+    cursor: pointer;
+
+    
+}
+
+.articleGist {
+    width: 90%;
+}
+
+.articleGistHeading{
+    font-size: 2rem;
+    margin-bottom: 1.7rem;
+}
+
+

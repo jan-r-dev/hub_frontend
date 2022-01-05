@@ -30,17 +30,18 @@ const Article = () => {
             const articleIndex = parseInt(el.split('-')[1], 10)
 
             if (el.startsWith('@@img-')) {
-                processedArticle.push(<img alt='placeholder' src={data.data.images[articleIndex]} />)
-
+                processedArticle.push(<img className={styles.articleImage} alt='placeholder' src={data.data.images[articleIndex]} />);
             } else if (el.startsWith('@@code-')) {
-                processedArticle.push(<ReactEmbedGist gist={data.data.snippets[articleIndex]} />)
-
+                processedArticle.push(<ReactEmbedGist
+                    wrapperClass={styles.articleGist}
+                    titleClass={styles.articleGistHeading}
+                    gist={data.data.snippets[articleIndex]} />
+                );
             } else if (el.startsWith('@@link-')){
-                processedArticle.push(<a href={data.data.sources[articleIndex]}>{data.data.sources[articleIndex]}</a>)
-
+                processedArticle.push(<a className={styles.articleLink} href={data.data.sources[articleIndex]}>{data.data.sources[articleIndex]}</a>);
             } else {
-                processedArticle.push(<p>{data.data.text[index]}</p>)
-            }
+                processedArticle.push(<p className={styles.articleText}>{data.data.text[index]}</p>);
+            };
         });
 
         processedArticle.unshift(<h2 className={styles.articleHeading}>{data.data.title}</h2>)
@@ -49,7 +50,6 @@ const Article = () => {
 
     useEffect(() => {
         fetchData();
-        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.articleId])
     

@@ -55,3 +55,7 @@
     margin-top: auto;
     margin-bottom: 2rem;
 }
+
+.card__exploreBtn:hover{
+    background-color: rgb(142, 48, 13);
+}

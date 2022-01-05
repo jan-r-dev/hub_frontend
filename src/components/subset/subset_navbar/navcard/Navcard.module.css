@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     background-color: rgb(190, 64, 18);
 
     width: 90%;
@@ -15,4 +14,12 @@
     cursor: pointer;
 
     box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+.navcard:hover{
+    background-color: rgb(142, 48, 13);
+}
+
+.active {
+    background-color: rgb(142, 48, 13);
 }
