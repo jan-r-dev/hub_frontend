@@ -6,6 +6,7 @@ import Links from '../../subset/subset_content/links/Links';
 import AboutMe from '../../subset/subset_content/aboutme/AboutMe';
 import Portfolio from '../../subset/subset_content/portfolio/Portfolio';
 import Article from '../../subset/subset_content/article/Article'
+import NotFound from '../../subset/technicals/notfound/NotFound'
 
 const Content = () => {
 
@@ -27,9 +28,14 @@ const Content = () => {
                 <Route path='/portfolio/articles/:articleId'>
                     <Article/>
                 </Route>
+                <Route path='*'>
+                    <NotFound details='You have entered my page using an unrouted link. Use the navbar to navigate to available content.'/>
+                </Route>
             </Switch>
         </main>
      );
 }
- 
+
+
+
 export default Content;

@@ -1,0 +1,18 @@
+.container {
+    color: rgb(230, 230, 230);
+
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 5rem;
+
+    align-self: flex-start;
+}
+
+.infoHeader {
+    font-size: 2.5rem;
+}
+
+.infoDetail {
+font-size: 1.8rem;
+}

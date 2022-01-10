@@ -9,4 +9,6 @@
     align-items: center;
     justify-content: flex-start;
     gap: 1.6rem;
+
+    border-top: 0.6rem solid rgb(24, 24, 24);
 }

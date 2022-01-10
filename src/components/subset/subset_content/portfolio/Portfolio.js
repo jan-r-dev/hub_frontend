@@ -2,9 +2,10 @@ import {React, useEffect, useState} from 'react';
 import styles from './Portfolio.module.css';
 import Card from '../card/Card';
 import axios from 'axios';
+import Loader from '../../technicals/loader/Loader'
 
 const Portfolio = () => {
-    const [cards, setCards] = useState([]);
+    const [cards, setCards] = useState();
     const [oldestCard, setOldestCard] = useState(Math.trunc((Date.now() / 1000)));
 
     async function fetchData () {
@@ -36,7 +37,7 @@ const Portfolio = () => {
     
     return ( 
         <div className={styles.portfolio}>
-            {cards}
+            {cards === undefined ? <Loader /> : cards}
         </div>
      );
 }

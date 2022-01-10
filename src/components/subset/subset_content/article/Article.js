@@ -4,8 +4,11 @@ import { useParams } from 'react-router-dom';
 import styles from './Article.module.css';
 import ReactEmbedGist from 'react-embed-gist';
 
+import NotFound from '../../technicals/notfound/NotFound'
+import Loader from '../../technicals/loader/Loader'
+
 const Article = () => {
-    const [article, setArticle] = useState([]);
+    const [article, setArticle] = useState();
 
     const params = useParams();
 
@@ -14,10 +17,12 @@ const Article = () => {
     async function fetchData() {
         try {
             const data = await axios.get(`http://localhost:8080/articles/${params.articleId}`);
-
-            processData(data)
+            
+            processData(data);
+            
         } catch (err) {
-            console.log(err);
+            setArticle(<NotFound details='This article does not exist. Use the navbar to navigate to available content.'/>
+            )
         };
     };
 
@@ -57,7 +62,7 @@ const Article = () => {
         <div className={styles.Article}>
 
             <div className={styles.articleContent}>
-                {article}
+                {article === undefined ? <Loader /> : article}
             </div>
         </div>
      );
