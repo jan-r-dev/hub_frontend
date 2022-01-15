@@ -13,7 +13,6 @@
     align-items: center;
 
     box-shadow: rgba(0, 0, 0, 0.274) 2.4px 2.4px 3.2px;
-
 }
 
 .card__stack {
@@ -54,6 +53,9 @@
 
     margin-top: auto;
     margin-bottom: 2rem;
+
+    transition-duration: 250ms;
+
 }
 
 .card__exploreBtn:hover{

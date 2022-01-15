@@ -1,4 +1,18 @@
-.aboutme {
-    background-color: rgb(78, 76, 76);
-    height: 100%;
+.articleContent {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.7rem;
+    color: rgb(255, 255, 255);
+
+    gap: 3.4rem;
+    padding: 3.4rem 0 3.4rem 0
+
+}
+
+.haiku {
+    text-align: justify;
 }

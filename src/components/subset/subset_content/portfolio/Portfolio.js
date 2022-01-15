@@ -14,29 +14,52 @@ const Portfolio = () => {
         try {
             const data = await axios.get(`http://localhost:8080/projects/${oldestCard}`);
 
-            setCurrCards(generatecurrCards(data.data));
+            setCurrCards(createCardsFromNewData(data.data));
         } catch (err) {
-            alert(err);
+            if (err instanceof TypeError) {
+                alert('Bottom reached');
+            };
         };
     };
 
-    function generatecurrCards (data) {
+    function createCardsFromNewData (data) {
         const currCards = data.map((el, i) => {
+            const convertedTimestamp = Math.trunc((Date.parse(el.created_on) / 1000))
+
             if (i === (data.length - 1)) {
-                setOldestCard(Math.trunc((Date.parse(el.created_on) / 1000)));
+                setOldestCard(convertedTimestamp);
             };
 
-            const generatedCard = <Card key={el.created_on} timestamp={el.created_on} title={el.title} summary={el.summary} stack={el.stack} link={el.link}/>
+            const generatedCard = <Card key={convertedTimestamp} timestamp={convertedTimestamp} title={el.title} summary={el.summary} stack={el.stack} link={el.link}/>
 
             return generatedCard;
         });
 
         setCachedCards(cachedCards.concat(currCards))
+        if (currCards.length < 3) fillInEmptyDivs(currCards)
         return currCards;
+    };
+
+    function fetchCardsFromCache (indexCurrOldest) {
+        const cardsFromCache = [];
+
+        for (let i = 1; i <= 3; i++) {
+            if (cachedCards[i + indexCurrOldest] === undefined) {
+                break;
+            } else {
+                cardsFromCache.push(cachedCards[i + indexCurrOldest]);
+            };
+        };
+        
+        setOldestCard(cardsFromCache[cardsFromCache.length - 1].props.timestamp);
+        if (cardsFromCache.length < 3) fillInEmptyDivs(cardsFromCache)
+        setCurrCards(cardsFromCache);
     };
 
     const pageUp = () => {
         const cacheIndex = cachedCards.findIndex(el => el.key === currCards[0].key);
+        if (cacheIndex === 0) return alert('Top reached');
+
         const cardsFromCache = [];
 
         let counter = cacheIndex - 3;
@@ -46,19 +69,27 @@ const Portfolio = () => {
         };
 
         setCurrCards(cardsFromCache);
-        setOldestCard(Date.parse(cardsFromCache[cardsFromCache.length-1].props.timestamp) / 1000);
+        setOldestCard(cardsFromCache[cardsFromCache.length-1].props.timestamp);
     };
 
     const pageDown = () => {
-        const indexCurrOldest = cachedCards.findIndex(el => Math.trunc(Date.parse(el.props.timestamp) / 1000) === oldestCard)
+        const indexCurrOldest = cachedCards.findIndex(el => el.props.timestamp === oldestCard);
 
-        console.log(indexCurrOldest + 1 === cachedCards.length)
-        /////// Continue from here
-    }
+        if (indexCurrOldest + 1 === cachedCards.length) {
+            fetchData();
+        } else {
+            fetchCardsFromCache(indexCurrOldest);
+        };
 
-    // const showState = () => {
-    //     console.log(cachedCards)
-    // }
+    };
+
+    const fillInEmptyDivs = (cards) => {
+        while (cards.length < 3) {
+            cards.push(<div></div>);
+        };
+
+        return cards;
+    };
 
     useEffect(() => {
         fetchData()
@@ -68,11 +99,10 @@ const Portfolio = () => {
     return ( 
         <Fragment>
         <div className={styles.portfolio}>
-            <button onClick={pageUp}>PageUp</button>
+            <button className={styles.pageButton} onClick={pageUp}>❮</button>
             {currCards === undefined ? <Loader /> : currCards}
-            <button onClick={fetchData}>PageDown</button>
+            <button className={styles.pageButton} onClick={pageDown}>❯</button>
         </div>
-        <button onClick={pageDown}>Expose state</button>
         </Fragment>
      );
 }
