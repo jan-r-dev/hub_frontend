@@ -5,7 +5,7 @@ import Navcard from '../../subset/subset_navbar/navcard/Navcard'
 
 const Navbar = () => {
 
-  const navOptions = ['Portfolio', 'About-me', 'Links'];
+  const navOptions = ['My-work', 'About-me'];
 
   const navcards = navOptions.map(el => {
     return <Navcard title={el} key={el}/>

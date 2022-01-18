@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 2.2rem;
+
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+}
+
+.active {
+    color: rgb(190, 64, 18);
+}

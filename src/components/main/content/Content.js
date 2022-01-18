@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Content.module.css';
 import {Route, Switch} from 'react-router-dom';
 
-import Links from '../../subset/subset_content/links/Links';
 import AboutMe from '../../subset/subset_content/aboutme/AboutMe';
 import Portfolio from '../../subset/subset_content/portfolio/Portfolio';
 import Article from '../../subset/subset_content/article/Article'
@@ -16,16 +15,13 @@ const Content = () => {
                 <Route path="/" exact>
                     <Portfolio />
                 </Route>
-                <Route path="/portfolio" exact>
+                <Route path="/my-work" exact>
                     <Portfolio />
                 </Route>
                 <Route path="/about-me" exact>
                     <AboutMe />
                 </Route>
-                <Route path="/links" exact>
-                    <Links />
-                </Route>
-                <Route path='/portfolio/articles/:articleId'>
+                <Route path='/my-work/articles/:articleId'>
                     <Article/>
                 </Route>
                 <Route path='*'>

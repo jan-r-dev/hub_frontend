@@ -18,7 +18,7 @@ const Card = (props) => {
             <div className={styles.card__stack}>
                 {stack}
             </div>
-            <NavLink to={`/portfolio/articles/${props.link}`} className={styles.card__exploreBtn}>
+            <NavLink to={`/my-work/articles/${props.link}`} className={styles.card__exploreBtn}>
                 Read article
             </NavLink>
         </div>

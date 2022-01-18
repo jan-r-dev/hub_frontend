@@ -1,16 +1,21 @@
-import {React, useEffect, useState} from 'react';
+import { React, useEffect, useState } from 'react';
 import styles from './Portfolio.module.css';
 import Card from '../card/Card';
 import axios from 'axios';
 import Loader from '../../technicals/loader/Loader'
 import { Fragment } from 'react/cjs/react.production.min';
+import PageCount from '../pageCount/PageCount';
+
+const itemsPerPage = 3
 
 const Portfolio = () => {
     const [currCards, setCurrCards] = useState();
     const [cachedCards, setCachedCards] = useState([]);
     const [oldestCard, setOldestCard] = useState(Math.trunc((Date.now() / 1000)));
+    const [projectCount, setProjectCount] = useState();
+    const [page, setPage] = useState(1)
 
-    async function fetchData () {
+    async function fetchData() {
         try {
             const data = await axios.get(`http://localhost:8080/projects/${oldestCard}`);
 
@@ -22,7 +27,17 @@ const Portfolio = () => {
         };
     };
 
-    function createCardsFromNewData (data) {
+    async function fetchProjectCount() {
+        try {
+            const data = await axios.get('http://localhost:8080/projects');
+
+            setProjectCount(data.data);
+        } catch (err) {
+            alert(err);
+        };
+    };
+
+    function createCardsFromNewData(data) {
         const currCards = data.map((el, i) => {
             const convertedTimestamp = Math.trunc((Date.parse(el.created_on) / 1000))
 
@@ -30,7 +45,7 @@ const Portfolio = () => {
                 setOldestCard(convertedTimestamp);
             };
 
-            const generatedCard = <Card key={convertedTimestamp} timestamp={convertedTimestamp} title={el.title} summary={el.summary} stack={el.stack} link={el.link}/>
+            const generatedCard = <Card key={convertedTimestamp} timestamp={convertedTimestamp} title={el.title} summary={el.summary} stack={el.stack} link={el.link} />
 
             return generatedCard;
         });
@@ -40,7 +55,7 @@ const Portfolio = () => {
         return currCards;
     };
 
-    function fetchCardsFromCache (indexCurrOldest) {
+    function fetchCardsFromCache(indexCurrOldest) {
         const cardsFromCache = [];
 
         for (let i = 1; i <= 3; i++) {
@@ -50,7 +65,7 @@ const Portfolio = () => {
                 cardsFromCache.push(cachedCards[i + indexCurrOldest]);
             };
         };
-        
+
         setOldestCard(cardsFromCache[cardsFromCache.length - 1].props.timestamp);
         if (cardsFromCache.length < 3) fillInEmptyDivs(cardsFromCache)
         setCurrCards(cardsFromCache);
@@ -69,7 +84,8 @@ const Portfolio = () => {
         };
 
         setCurrCards(cardsFromCache);
-        setOldestCard(cardsFromCache[cardsFromCache.length-1].props.timestamp);
+        setOldestCard(cardsFromCache[cardsFromCache.length - 1].props.timestamp);
+        setPage(() => page - 1)
     };
 
     const pageDown = () => {
@@ -81,11 +97,13 @@ const Portfolio = () => {
             fetchCardsFromCache(indexCurrOldest);
         };
 
+        setPage(() => page + 1)
     };
 
     const fillInEmptyDivs = (cards) => {
+        let key = 10
         while (cards.length < 3) {
-            cards.push(<div></div>);
+            cards.push(<div key={key + cards.length}></div>);
         };
 
         return cards;
@@ -93,18 +111,34 @@ const Portfolio = () => {
 
     useEffect(() => {
         fetchData()
+        fetchProjectCount()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
-    return ( 
-        <Fragment>
-        <div className={styles.portfolio}>
-            <button className={styles.pageButton} onClick={pageUp}>❮</button>
-            {currCards === undefined ? <Loader /> : currCards}
-            <button className={styles.pageButton} onClick={pageDown}>❯</button>
-        </div>
-        </Fragment>
-     );
+
+    const isReady = () => {
+        if (currCards === undefined || projectCount === undefined) {
+            return (
+                <div className={styles.loaderContainer}>
+                    <Loader />
+                </div>
+            )
+        } else {
+            return (
+                <Fragment>
+                    <div className={styles.portfolio}>
+                        <button className={styles.pageButton} onClick={pageUp}>❮</button>
+                        {currCards}
+                        <button className={styles.pageButton} onClick={pageDown}>❯</button>
+                    </div>
+                    <PageCount itemCount={projectCount} itemsPerPage={itemsPerPage} itemActive={page} />
+                </Fragment>
+            );
+        };
+    };
+
+    return (
+        isReady()
+    );
 }
- 
+
 export default Portfolio;
