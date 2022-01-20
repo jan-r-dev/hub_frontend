@@ -12,6 +12,12 @@
     color: rgb(255, 255, 255);
 }
 
+.pageNumber {
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    cursor: default;
+}
+
 .active {
     color: rgb(190, 64, 18);
 }
+

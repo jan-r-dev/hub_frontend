@@ -12,11 +12,11 @@ const PageCount = (props) => {
 
             if (props.itemActive === counter) {
                 pages.push(
-                    <div className={styles.active} key={counter}>{counter}</div>
+                    <div className={`${styles.active} ${styles.pageNumber}`} key={counter}>{counter}</div>
                 );
             } else {
                 pages.push(
-                    <div key={counter}>{counter}</div>
+                    <div className={styles.pageNumber} key={counter}>{counter}</div>
                 );
             }
 

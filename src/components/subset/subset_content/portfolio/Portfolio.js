@@ -21,9 +21,7 @@ const Portfolio = () => {
 
             setCurrCards(createCardsFromNewData(data.data));
         } catch (err) {
-            if (err instanceof TypeError) {
-                alert('Bottom reached');
-            };
+            alert(err)
         };
     };
 
@@ -51,14 +49,14 @@ const Portfolio = () => {
         });
 
         setCachedCards(cachedCards.concat(currCards))
-        if (currCards.length < 3) fillInEmptyDivs(currCards)
+        if (currCards.length < itemsPerPage) fillInEmptyDivs(currCards)
         return currCards;
     };
 
     function fetchCardsFromCache(indexCurrOldest) {
         const cardsFromCache = [];
 
-        for (let i = 1; i <= 3; i++) {
+        for (let i = 1; i <= itemsPerPage; i++) {
             if (cachedCards[i + indexCurrOldest] === undefined) {
                 break;
             } else {
@@ -67,17 +65,16 @@ const Portfolio = () => {
         };
 
         setOldestCard(cardsFromCache[cardsFromCache.length - 1].props.timestamp);
-        if (cardsFromCache.length < 3) fillInEmptyDivs(cardsFromCache)
+        if (cardsFromCache.length < itemsPerPage) fillInEmptyDivs(cardsFromCache)
         setCurrCards(cardsFromCache);
     };
 
     const pageUp = () => {
         const cacheIndex = cachedCards.findIndex(el => el.key === currCards[0].key);
-        if (cacheIndex === 0) return alert('Top reached');
 
         const cardsFromCache = [];
 
-        let counter = cacheIndex - 3;
+        let counter = cacheIndex - itemsPerPage;
         while (counter !== cacheIndex) {
             cardsFromCache.push(cachedCards[counter]);
             counter++;
@@ -102,7 +99,7 @@ const Portfolio = () => {
 
     const fillInEmptyDivs = (cards) => {
         let key = 10
-        while (cards.length < 3) {
+        while (cards.length < itemsPerPage) {
             cards.push(<div key={key + cards.length}></div>);
         };
 
@@ -126,9 +123,9 @@ const Portfolio = () => {
             return (
                 <Fragment>
                     <div className={styles.portfolio}>
-                        <button className={styles.pageButton} onClick={pageUp}>❮</button>
+                        {page === 1 ? <button className={`${styles.pageButton} ${styles.disabled}`} onClick={pageUp}>❮</button> : <button className={styles.pageButton} onClick={pageUp}>❮</button>}
                         {currCards}
-                        <button className={styles.pageButton} onClick={pageDown}>❯</button>
+                        {page * itemsPerPage >= projectCount ? <button className={`${styles.pageButton} ${styles.disabled}`} onClick={pageDown}>❯</button> : <button className={styles.pageButton} onClick={pageDown}>❯</button>}
                     </div>
                     <PageCount itemCount={projectCount} itemsPerPage={itemsPerPage} itemActive={page} />
                 </Fragment>

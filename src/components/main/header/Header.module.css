@@ -6,8 +6,7 @@
     justify-content: flex-start;
     align-items: center;
 
-    border-left: 0.6rem solid rgb(24, 24, 24);
-
+    border-left: 1rem solid rgb(24, 24, 24);
 }
 
 .header__h1 {
