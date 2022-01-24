@@ -2,12 +2,12 @@
     background-color: rgb(24, 24, 24);
 
     display: grid;
-    grid-template-columns: 4rem repeat(3, 34rem) 4rem;
+    grid-template-columns: 4rem repeat(3, 1fr) 4rem;
     gap: 6rem;
 
     align-items: center;
 
-    padding: 10rem 2rem 4rem 2rem;
+    padding: 4rem 2rem 4rem 2rem;
 }
 
 .pageButton {

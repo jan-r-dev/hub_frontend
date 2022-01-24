@@ -1,8 +1,4 @@
 .content {
-    grid-column: center-start / center-end;
-
-    display: grid;
-    align-content: stretch;
-    justify-content: stretch;
-
+    display: flex;
+    flex-direction: column;
 }

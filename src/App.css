@@ -1,8 +1,6 @@
 .container {
   background-color: rgb(24, 24, 24);
-  display: grid;
-  grid-template-rows: 8vh minmax(92vh, max-content);
-  grid-template-columns: 
-    [navbar-start full-start] 30rem [navbar-end]
-    minmax(4rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 17rem) [col-end]) [center-end] minmax(4rem, 1fr) [full-end];
+
+  height: 100vh;
+  width: 100vw;
 }
