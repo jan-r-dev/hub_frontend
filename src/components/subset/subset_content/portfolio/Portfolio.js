@@ -6,7 +6,17 @@ import Loader from '../../technicals/loader/Loader'
 import { Fragment } from 'react/cjs/react.production.min';
 import PageCount from '../pageCount/PageCount';
 
-const itemsPerPage = 2
+
+let itemsPerPage
+let intViewportWidth = window.innerWidth;
+
+if (intViewportWidth > 1380) {
+    itemsPerPage = 3
+} else if (intViewportWidth <= 1380 && intViewportWidth > 980) {
+    itemsPerPage = 2
+} else if (intViewportWidth <= 980) {
+    itemsPerPage = 1
+}
 
 const Portfolio = () => {
     const [currCards, setCurrCards] = useState();
