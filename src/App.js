@@ -10,7 +10,7 @@ import Content from './components/main/content/Content';
 const App = () => {
 
   return (
-    <div className="container">
+    <div className="app">
         <Top />
         <Content/>
     </div>

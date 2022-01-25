@@ -6,7 +6,7 @@ import Loader from '../../technicals/loader/Loader'
 import { Fragment } from 'react/cjs/react.production.min';
 import PageCount from '../pageCount/PageCount';
 
-const itemsPerPage = 3
+const itemsPerPage = 2
 
 const Portfolio = () => {
     const [currCards, setCurrCards] = useState();
@@ -17,7 +17,7 @@ const Portfolio = () => {
 
     async function fetchData() {
         try {
-            const data = await axios.get(`http://localhost:8080/projects/${oldestCard}`);
+            const data = await axios.get(`http://localhost:8080/projects/${oldestCard}?count=${itemsPerPage}`);
 
             setCurrCards(createCardsFromNewData(data.data));
         } catch (err) {
@@ -106,6 +106,26 @@ const Portfolio = () => {
         return cards;
     };
 
+    const pageButton = (type) => {
+        switch (type) {
+            case 'upEnabled': return (
+                <button className={`${styles.pageButton} ${styles.up}`} onClick={pageUp}>❮</button>
+            );
+            case 'upDisabled': return (
+                <button className={`${styles.pageButton} ${styles.up} ${styles.disabled}`} onClick={pageUp}>❮</button>
+            );
+            case 'downEnabled': return (
+                <button className={`${styles.pageButton} ${styles.down}`} onClick={pageDown}>❯</button>
+            );
+
+            case 'downDisabled': return (
+                <button className={`${styles.pageButton} ${styles.down} ${styles.disabled}`} onClick={pageDown}>❯</button>
+            );
+
+            default: return undefined;
+        };
+    };
+
     useEffect(() => {
         fetchData()
         fetchProjectCount()
@@ -123,9 +143,9 @@ const Portfolio = () => {
             return (
                 <Fragment>
                     <div className={styles.portfolio}>
-                        {page === 1 ? <button className={`${styles.pageButton} ${styles.disabled}`} onClick={pageUp}>❮</button> : <button className={styles.pageButton} onClick={pageUp}>❮</button>}
+                        {page === 1 ? pageButton('upDisabled') : pageButton('upEnabled')}
                         {currCards}
-                        {page * itemsPerPage >= projectCount ? <button className={`${styles.pageButton} ${styles.disabled}`} onClick={pageDown}>❯</button> : <button className={styles.pageButton} onClick={pageDown}>❯</button>}
+                        {page * itemsPerPage >= projectCount ? pageButton('downDisabled') : pageButton('downEnabled')}
                     </div>
                     <PageCount itemCount={projectCount} itemsPerPage={itemsPerPage} itemActive={page} />
                 </Fragment>

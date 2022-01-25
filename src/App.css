@@ -1,7 +1,13 @@
-.container {
+.app {
   background-color: rgb(24, 24, 24);
   box-sizing: border-box;
 
-  height: inherit;
+  min-height: 100vh;
   width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
 }

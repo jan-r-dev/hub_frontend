@@ -2,8 +2,8 @@
     background-color: rgb(24, 24, 24);
 
     display: grid;
-    grid-template-columns: 1fr repeat(3, 3fr) 1fr;
-    gap: 6rem;
+    grid-template-columns: minmax(1rem, 1fr) repeat(3, minmax(35rem, 3fr)) minmax(min-content, 1fr);
+    gap: 6rem;  
 
     align-items: center;
 
@@ -26,6 +26,14 @@
 
     padding-bottom: 0.8rem;
     transition-duration: 250ms;
+}
+
+.up {
+    grid-column: 0/1;
+}
+
+.down {
+    grid-column: 5/6;
 }
 
 .pageButton:hover{ 
