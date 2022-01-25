@@ -3,13 +3,17 @@ import styles from './Navcard.module.css'
 import { NavLink } from 'react-router-dom';
 
 const Navcard = (props) => {
-    return ( 
-        <NavLink to={`/${props.title.toLowerCase()}`} className={styles.navcard} activeClassName={styles.active}>
-            {props.title.replace('-', ' ')}
-        </NavLink>  
-     );
+  return (
+    <NavLink
+      to={`/${props.title.toLowerCase()}`}
+      className={styles.navcard}
+      activeClassName={styles.active}
+    >
+      <span>{props.title.replace('-', ' ')}</span>
+    </NavLink>
+  );
 }
- 
+
 export default Navcard;
 
 /*

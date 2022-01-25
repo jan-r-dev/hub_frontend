@@ -1,6 +1,6 @@
 .navcard {
     all: unset;
-    
+
     font-size: 1.7rem;
     color: rgb(255, 255, 255);
     display: flex;
@@ -9,17 +9,26 @@
     text-align: center;
     background-color: rgb(190, 64, 18);
 
-    width: 20rem;
-    height: 100%;
-    border-radius: .2rem;
+    width: 15rem;
+    height: 5rem;
     cursor: pointer;
+    margin-top: 1rem;
 
     box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
     transition-duration: 250ms;
 
+    transform: skew(-21deg);
 }
 
-.navcard:hover{
+.navcard:first-child {
+    margin-left: 1.8rem;
+}
+
+.navcard>span {
+    transform: skew(21deg);
+}
+
+.navcard:hover {
     background-color: rgb(142, 48, 13);
 }
 
