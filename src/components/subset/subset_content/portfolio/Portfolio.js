@@ -10,13 +10,20 @@ import PageCount from '../pageCount/PageCount';
 let itemsPerPage
 let intViewportWidth = window.innerWidth;
 
-if (intViewportWidth > 1380) {
-    itemsPerPage = 3
-} else if (intViewportWidth <= 1380 && intViewportWidth > 980) {
-    itemsPerPage = 2
-} else if (intViewportWidth <= 980) {
-    itemsPerPage = 1
+function adjustItemsPerPage() {
+    intViewportWidth = window.innerWidth;
+
+    if (intViewportWidth > 1380) {
+        itemsPerPage = 3
+    } else if (intViewportWidth <= 1380 && intViewportWidth > 980) {
+        itemsPerPage = 2
+    } else if (intViewportWidth <= 980) {
+        itemsPerPage = 1
+    }
 }
+
+window.onresize = adjustItemsPerPage;
+adjustItemsPerPage();
 
 const Portfolio = () => {
     const [currCards, setCurrCards] = useState();
@@ -157,7 +164,7 @@ const Portfolio = () => {
                         {currCards}
                         {page * itemsPerPage >= projectCount ? pageButton('downDisabled') : pageButton('downEnabled')}
                     </div>
-                    <PageCount itemCount={projectCount} itemsPerPage={itemsPerPage} itemActive={page} />
+                    <PageCount className={styles} itemCount={projectCount} itemsPerPage={itemsPerPage} itemActive={page} />
                 </Fragment>
             );
         };

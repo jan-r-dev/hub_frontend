@@ -58,6 +58,31 @@
 
 }
 
-.card__exploreBtn:hover{
+.card__exploreBtn:hover {
     background-color: rgb(142, 48, 13);
 }
+
+
+@media screen and (max-height: 750px) {
+    .card{
+        height: 54rem;
+    }
+}
+
+@media screen and (max-height: 680px) {
+    .card{
+        height: 50rem;
+    }
+}
+
+/* @media screen and (max-width: 980px) {
+    .card{
+        height: 50rem;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .card{
+        height: 46rem;
+    }
+} */
