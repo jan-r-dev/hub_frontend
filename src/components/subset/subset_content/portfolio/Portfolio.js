@@ -1,11 +1,9 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState, Fragment } from 'react';
 import styles from './Portfolio.module.css';
 import Card from '../card/Card';
 import axios from 'axios';
 import Loader from '../../technicals/loader/Loader'
 import PageCount from '../pageCount/PageCount';
-import SwipeWrapper from '../../technicals/swipeWrapper/swipeWrapper';
-
 
 let itemsPerPage
 let intViewportWidth = window.innerWidth;
@@ -158,14 +156,14 @@ const Portfolio = () => {
             )
         } else {
             return (
-                <SwipeWrapper>
+                <Fragment>
                     <div className={styles.portfolio}>
                         {page === 1 ? pageButton('upDisabled') : pageButton('upEnabled')}
                         {currCards}
                         {page * itemsPerPage >= projectCount ? pageButton('downDisabled') : pageButton('downEnabled')}
                     </div>
                     <PageCount className={styles} itemCount={projectCount} itemsPerPage={itemsPerPage} itemActive={page} />
-                </SwipeWrapper>
+                </Fragment>
             );
         };
     };

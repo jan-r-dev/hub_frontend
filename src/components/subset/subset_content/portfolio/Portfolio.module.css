@@ -65,7 +65,7 @@
 @media screen and (max-width: 980px) {
     .portfolio {
         grid-template-columns: minmax(min-content, 1fr) repeat(1, minmax(35rem, 3fr)) minmax(min-content, 1fr);
-        gap: 2rem
+        gap: .6rem
     }
 
     .down {
