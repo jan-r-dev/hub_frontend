@@ -1,8 +1,10 @@
 .Article {
     display: grid;
     grid-template-columns: 100%;
+    gap: 1.9rem;
 
     margin: 2rem 5% 2rem 5%;
+    justify-items: center;
 
     font-size: 1.9rem;
     color: rgb(255, 255, 255);
@@ -14,8 +16,8 @@
 }
 
 .articleText {
-    width: auto;
-    overflow-wrap: break-word;
+    justify-self: flex-start;
+    height: fit-content;
 }
 
 .articleLink {
@@ -24,7 +26,8 @@
 }
 
 .articleGist {
-    max-width: 75%;
+    width: 100%;
+    overflow: hidden;
 }
 
 .articleGistHeading {
