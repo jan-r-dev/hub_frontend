@@ -1,36 +1,33 @@
-.articleContent {
-    display: flex;
-    flex-direction: column;
+.Article {
+    display: grid;
+    grid-template-columns: 100%;
 
-    align-items: center;
-    justify-content: center;
+    margin: 2rem 5% 2rem 5%;
 
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     color: rgb(255, 255, 255);
-
-    gap: 3.4rem;
-    padding: 3.4rem 0 3.4rem 0
-
 }
 
 .articleImage {
     max-height: 40rem;
+    max-width: 75%;
 }
 
 .articleText {
-    height: max-content;
-    align-self: flex-start;
+    width: auto;
+    overflow-wrap: break-word;
 }
 
 .articleLink {
     all: unset;
     cursor: pointer;
 }
+
 .articleGist {
-    width: 90%;
+    max-width: 75%;
 }
 
-.articleGistHeading{
+.articleGistHeading {
     font-size: 2rem;
     margin-bottom: 1.7rem;
 }
