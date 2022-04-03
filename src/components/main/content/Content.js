@@ -21,7 +21,7 @@ const Content = () => {
                 <Route path="/about-me" exact>
                     <AboutMe />
                 </Route>
-                <Route path='/my-work/articles/:articleId'>
+                <Route path='/my-work/articles/:article_url'>
                     <Article/>
                 </Route>
                 <Route path='*'>

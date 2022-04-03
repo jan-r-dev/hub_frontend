@@ -9,4 +9,6 @@
   grid-template-rows: min-content;
 
   gap: 2vh;
+  outline: 1px solid red;
+
 }

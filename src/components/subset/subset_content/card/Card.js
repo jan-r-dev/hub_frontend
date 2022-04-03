@@ -12,7 +12,7 @@ const Card = (props) => {
         <div className={styles.card}>
             <h3 className={styles.card__h3}>{props.title}</h3>
             <p className={styles.card__description}>{props.summary}</p>
-            <time datetime={props.created_on}>{props.created_on.split('T')[0]}</time>
+            <time dateTime={props.created_on}>{props.created_on.split('T')[0]}</time>
             <h4 className={styles.card__h3}>Stack</h4>
             <div className={styles.card__stack}>
                 {stack}

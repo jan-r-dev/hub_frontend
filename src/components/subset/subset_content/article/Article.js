@@ -16,10 +16,8 @@ const Article = () => {
 
     async function fetchData() {
         try {
-            const data = await axios.get(`http://localhost:8080/articles/${params.articleId}`);
-
+            const data = await axios.get(`http://localhost:8080/articles/${params.article_url}`);
             processData(data);
-
         } catch (err) {
             setArticle(<NotFound details='This article does not exist. Use the navbar to navigate to available content.' />
             )
@@ -35,15 +33,15 @@ const Article = () => {
             const articleIndex = parseInt(el.split('-')[1], 10)
 
             if (el.startsWith('@@img-')) {
-                processedArticle.push(<img className={styles.articleImage} alt='placeholder' src={data.data.images[articleIndex]} />);
+                processedArticle.push(<img className={styles.articleImage} alt='placeholder' src={data.data.image_url[articleIndex]} />);
             } else if (el.startsWith('@@code-')) {
                 processedArticle.push(<ReactEmbedGist
                     wrapperClass={styles.articleGist}
                     titleClass={styles.articleGistHeading}
-                    gist={data.data.snippets[articleIndex]} />
+                    gist={data.data.snippet_url[articleIndex]} />
                 );
             } else if (el.startsWith('@@link-')) {
-                processedArticle.push(<a className={styles.articleLink} href={data.data.sources[articleIndex]}>{data.data.sources[articleIndex]}</a>);
+                processedArticle.push(<a className={styles.articleLink} href={data.data.source_url[articleIndex]}>{data.data.source_url[articleIndex]}</a>);
             } else {
                 processedArticle.push(<p className={styles.articleText}>{data.data.text[index]}</p>);
             };
@@ -56,7 +54,7 @@ const Article = () => {
     useEffect(() => {
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [params.articleId])
+    }, [params.article_url])
 
     return (
         <div className={styles.Article}>

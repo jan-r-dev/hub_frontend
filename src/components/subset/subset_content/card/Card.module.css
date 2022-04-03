@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    height: 60rem;
+    height: 55rem;
 
     padding: 1.5rem 2.5rem 0 2.5rem;
 
@@ -68,21 +68,3 @@
         height: 54rem;
     }
 }
-
-@media screen and (max-height: 680px) {
-    .card{
-        height: 50rem;
-    }
-}
-
-/* @media screen and (max-width: 980px) {
-    .card{
-        height: 50rem;
-    }
-}
-
-@media screen and (max-width: 670px) {
-    .card{
-        height: 46rem;
-    }
-} */
